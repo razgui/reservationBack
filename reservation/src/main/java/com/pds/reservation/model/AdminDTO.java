@@ -13,8 +13,8 @@ public class AdminDTO {
     @Size(max = 255)
     private String lastName;
 
-    @Size(max = 255)
-    private String role;
+
+    private Role role;
 
     @Size(max = 255)
     private String mail;
@@ -46,11 +46,11 @@ public class AdminDTO {
         this.lastName = lastName;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(final String role) {
+    public void setRole(final Role role) {
         this.role = role;
     }
 
