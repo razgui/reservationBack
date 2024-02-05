@@ -14,7 +14,6 @@ public class SoinsDTO {
 
     private String description;
 
-    private Long reservationID;
 
     public Long getId() {
         return id;
@@ -48,12 +47,5 @@ public class SoinsDTO {
         this.description = description;
     }
 
-    public Long getReservationID() {
-        return reservationID;
-    }
-
-    public void setReservationID(final Long reservationID) {
-        this.reservationID = reservationID;
-    }
 
 }

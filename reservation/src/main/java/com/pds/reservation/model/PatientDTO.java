@@ -2,6 +2,8 @@ package com.pds.reservation.model;
 
 import jakarta.validation.constraints.Size;
 
+import java.time.LocalDateTime;
+
 
 public class PatientDTO {
 
@@ -18,6 +20,8 @@ public class PatientDTO {
 
     @Size(max = 255)
     private String telephone;
+
+    private LocalDateTime creationDate;
 
     public Long getId() {
         return id;
@@ -59,4 +63,11 @@ public class PatientDTO {
         this.telephone = telephone;
     }
 
+    public LocalDateTime getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(LocalDateTime creationDate) {
+        this.creationDate = creationDate;
+    }
 }

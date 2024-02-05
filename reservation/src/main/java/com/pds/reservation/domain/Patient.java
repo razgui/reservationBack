@@ -6,6 +6,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+
+import java.time.LocalDateTime;
 import java.util.Set;
 
 
@@ -28,6 +30,8 @@ public class Patient {
 
     @Column
     private String telephone;
+    @Column
+    private LocalDateTime creationDate;
 
     @OneToMany(mappedBy = "patient")
     private Set<Reservation> reservations;
@@ -70,6 +74,14 @@ public class Patient {
 
     public void setTelephone(final String telephone) {
         this.telephone = telephone;
+    }
+
+    public LocalDateTime getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(LocalDateTime creationDate) {
+        this.creationDate = creationDate;
     }
 
     public Set<Reservation> getReservations() {

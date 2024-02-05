@@ -8,17 +8,11 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value = "/api/reservations", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ReservationResource {
 
@@ -37,6 +31,23 @@ public class ReservationResource {
     public ResponseEntity<ReservationDTO> getReservation(@PathVariable(name = "id") final Long id) {
         return ResponseEntity.ok(reservationService.get(id));
     }
+
+    @GetMapping("/number")
+    public ResponseEntity<Integer> getReservationNbreToday() {
+        return ResponseEntity.ok(reservationService.nmbrOfResrvationToday());
+    }
+
+    @GetMapping("/bookingNumber")
+    public ResponseEntity<Integer> getReservationBookedToday() {
+        return ResponseEntity.ok(reservationService.nmbrOfResrvationBookedToday());
+    }
+
+    @GetMapping("/PerMonth")
+    public ResponseEntity<List<Integer>> getReservationPerMonth() {
+        return ResponseEntity.ok(reservationService.getNumberOfReservationsPerMonth());
+    }
+
+
 
     @PostMapping
     @ApiResponse(responseCode = "201")

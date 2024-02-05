@@ -58,7 +58,6 @@ public class SoinsService {
         soinsDTO.setName(soins.getName());
         soinsDTO.setPrice(soins.getPrice());
         soinsDTO.setDescription(soins.getDescription());
-        soinsDTO.setReservationID(soins.getReservationID() == null ? null : soins.getReservationID().getId());
         return soinsDTO;
     }
 
@@ -66,9 +65,6 @@ public class SoinsService {
         soins.setName(soinsDTO.getName());
         soins.setPrice(soinsDTO.getPrice());
         soins.setDescription(soinsDTO.getDescription());
-        final Reservation reservationID = soinsDTO.getReservationID() == null ? null : reservationRepository.findById(soinsDTO.getReservationID())
-                .orElseThrow(() -> new NotFoundException("reservationID not found"));
-        soins.setReservationID(reservationID);
         return soins;
     }
 

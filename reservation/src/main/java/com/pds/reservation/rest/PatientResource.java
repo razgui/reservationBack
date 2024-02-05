@@ -32,6 +32,16 @@ public class PatientResource {
         return ResponseEntity.ok(patientService.get(id));
     }
 
+    @GetMapping("/number")
+    public ResponseEntity<Integer> getPatient() {
+        return ResponseEntity.ok(patientService.getNbreOfPatients());
+    }
+
+    @GetMapping("/PerMonth")
+    public ResponseEntity<List<Integer>> getReservationPerMonth() {
+        return ResponseEntity.ok(patientService.getNumberOfPatientAddPerMonth());
+    }
+
     @PostMapping
     @ApiResponse(responseCode = "201")
     public ResponseEntity<Long> createPatient(@RequestBody @Valid final PatientDTO patientDTO) {

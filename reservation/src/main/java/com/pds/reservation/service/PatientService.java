@@ -4,6 +4,8 @@ import com.pds.reservation.domain.Patient;
 import com.pds.reservation.model.PatientDTO;
 import com.pds.reservation.repos.PatientRepository;
 import com.pds.reservation.util.NotFoundException;
+
+import java.time.LocalDateTime;
 import java.util.List;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -25,6 +27,10 @@ public class PatientService {
                 .toList();
     }
 
+    public List<Integer> getNumberOfPatientAddPerMonth() {
+        return patientRepository.findNumberOfPatientAddedPerMonth();
+    }
+
     public PatientDTO get(final Long id) {
         return patientRepository.findById(id)
                 .map(patient -> mapToDTO(patient, new PatientDTO()))
@@ -35,6 +41,10 @@ public class PatientService {
         final Patient patient = new Patient();
         mapToEntity(patientDTO, patient);
         return patientRepository.save(patient).getId();
+    }
+
+    public int getNbreOfPatients() {
+        return patientRepository.findAll().size();
     }
 
     public void update(final Long id, final PatientDTO patientDTO) {
@@ -54,6 +64,7 @@ public class PatientService {
         patientDTO.setLastName(patient.getLastName());
         patientDTO.setMail(patient.getMail());
         patientDTO.setTelephone(patient.getTelephone());
+        patientDTO.setCreationDate(patient.getCreationDate());
         return patientDTO;
     }
 
@@ -62,6 +73,7 @@ public class PatientService {
         patient.setLastName(patientDTO.getLastName());
         patient.setMail(patientDTO.getMail());
         patient.setTelephone(patientDTO.getTelephone());
+        patient.setCreationDate(LocalDateTime.now());
         return patient;
     }
 

@@ -8,7 +8,9 @@ public class ReservationDTO {
     private Long id;
     private LocalDateTime date;
     private String description;
+    private LocalDateTime creationDate;
     private Long patient;
+    private Long soin;
 
     public Long getId() {
         return id;
@@ -42,4 +44,19 @@ public class ReservationDTO {
         this.patient = patient;
     }
 
+    public LocalDateTime getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(LocalDateTime creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public Long getSoin() {
+        return soin;
+    }
+
+    public void setSoin(Long soin) {
+        this.soin = soin;
+    }
 }

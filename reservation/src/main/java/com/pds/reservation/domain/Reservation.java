@@ -22,12 +22,21 @@ public class Reservation {
     @Column
     private LocalDateTime date;
 
+    @Column
+    private LocalDateTime creationDate;
+
     @Column(name = "\"description\"", columnDefinition = "longtext")
     private String description;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "patient_id")
     private Patient patient;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "soin_id")
+    private Soins soins;
+
+
 
     public Long getId() {
         return id;
@@ -61,4 +70,19 @@ public class Reservation {
         this.patient = patient;
     }
 
+    public Soins getSoins() {
+        return soins;
+    }
+
+    public void setSoins(Soins soins) {
+        this.soins = soins;
+    }
+
+    public LocalDateTime getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(LocalDateTime creationDate) {
+        this.creationDate = creationDate;
+    }
 }

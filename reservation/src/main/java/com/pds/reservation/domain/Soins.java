@@ -27,10 +27,6 @@ public class Soins {
     @Column(name = "\"description\"", columnDefinition = "longtext")
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "reservationidid")
-    private Reservation reservationID;
-
     public Long getId() {
         return id;
     }
@@ -63,12 +59,5 @@ public class Soins {
         this.description = description;
     }
 
-    public Reservation getReservationID() {
-        return reservationID;
-    }
-
-    public void setReservationID(final Reservation reservationID) {
-        this.reservationID = reservationID;
-    }
 
 }
